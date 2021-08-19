@@ -1,0 +1,26 @@
+version: "3"
+services:
+  web:
+    image: node:alpine
+    working_dir: /home/node/app
+    volumes:
+      - ./frontend:/home/node/app
+    command: yarn start
+    ports:
+      - 3000:3000
+
+  micro1:
+    build: ./microservice1
+    working_dir: /home/node/app
+    volumes:
+      - ./microservice1:/home/node/app
+    command: yarn start:dev
+    ports:
+      - 3001:3001
+
+  micro2:
+    build: ./microservice2
+    working_dir: /home/node/app
+    volumes:
+      - ./microservice2:/home/node/app
+    command: yarn start:dev

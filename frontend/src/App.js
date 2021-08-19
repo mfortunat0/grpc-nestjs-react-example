@@ -5,12 +5,12 @@ function App() {
   const inputRef = useRef();
   const request = async (e) => {
     e.preventDefault();
-    console.log(
-      await (
+    alert(
+      `${inputRef.current.value} * 2 = ${await (
         await axios.get(
           `http://localhost:3001?number=${inputRef.current.value}`
         )
-      ).data
+      ).data.number}`
     );
   };
 
